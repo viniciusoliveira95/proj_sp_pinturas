@@ -5,7 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/vinicius/Desktop/proj_sp_pinturas/database/SpPintura.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/vinicius/Desktop/projeto_sp_pinturas/proj_sp_pinturas/database/SpPintura.db'
 app.config['SECRET_KEY'] = 'senha123'
 
 db = SQLAlchemy(app)
