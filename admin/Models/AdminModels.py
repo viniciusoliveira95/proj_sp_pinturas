@@ -1,16 +1,4 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-import os
-
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/vinicius/Desktop/projeto sp pinturas/proj_sp_pinturas/database/SpPintura.db'
-app.config['SECRET_KEY'] = 'senha123'
-
-db = SQLAlchemy(app)
-admin = Admin(app)
+from AppStart import db
 
 
 class Cliente(db.Model):
@@ -39,7 +27,7 @@ class Orcamentos(db.Model):
     dataPedido = db.Column('Data do Pedido', db.Date)
     dataFeito = db.Column('Data que foi feito', db.Date)
     dataCancelado = db.Column('Data que foi cancelado', db.Date)
-    motivoCancelado = db.Column('Motivo cancelamento',db.Date)
+    motivoCancelado = db.Column('Motivo cancelamento',db.String(200))
     pdfOrcamento = db.Column('PDF link e/ou nome',db.String(200))
     clienteId = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=True)
 
@@ -51,10 +39,6 @@ class Estoque(db.Model):
     descricao = db.Column('Descrição', db.String(500))
     codigo = db.Column('Código', db.Integer)
 
-admin.add_view(ModelView(Cliente,db.session))
-admin.add_view(ModelView(Orcamentos,db.session))
-admin.add_view(ModelView(Estoque,db.session))
 
 
-if __name__ == '__main__':   
-    app.run()
+
