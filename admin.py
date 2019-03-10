@@ -6,7 +6,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/vinicius/Desktop/projeto_sp_pinturas/proj_sp_pinturas/database/SpPintura.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/vinicius/Desktop/projeto sp pinturas/proj_sp_pinturas/database/SpPintura.db'
 app.config['SECRET_KEY'] = 'senha123'
 
 db = SQLAlchemy(app)
@@ -56,6 +56,5 @@ admin.add_view(ModelView(Orcamentos,db.session))
 admin.add_view(ModelView(Estoque,db.session))
 
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+if __name__ == '__main__':   
+    app.run()
